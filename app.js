@@ -30,21 +30,38 @@ var UIController = (function(){
 
 var controller = (function(budgetCtrl, UICtrl){
     
-     var DOM = UICtrl.getDomstring();
-    
-    var cntrlAddItem= function(){
-        
-        var input= UICtrl.getInput();
-        console.log(input);
-    }
+    var setupEventListener= function(){
 
-    document.querySelector(DOM.inputButton).addEventListener('click', cntrlAddItem);
+        var DOM = UICtrl.getDomstring();
 
-    document.addEventListener('keypress', function(event){
+        document.querySelector(DOM.inputButton).addEventListener('click', cntrlAddItem);
+
+        document.addEventListener('keypress', function(event){
           if(event.keyCode === 13 || event.which === 13)
           {
              cntrlAddItem();
           }
     });
 
+    };
+    
+
+    var cntrlAddItem = function(){
+        
+        var input= UICtrl.getInput();
+        
+        
+
+    };
+
+    return{
+        init: function(){
+
+            setupEventListener();
+        }
+    };
+
+     
 })(budgetController, UIController);
+
+controller.init();
