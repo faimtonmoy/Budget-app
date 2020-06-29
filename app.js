@@ -74,7 +74,7 @@ var UIController = (function(){
             return{
                 type: document.querySelector(DomString.inputType).value,
                 description: document.querySelector(DomString.inputDesciption).value,
-                value: document.querySelector(DomString.inputValue).value
+                value: parseFloat(document.querySelector(DomString.inputValue).value)
             };
         },
         addListItem: function(obj, type){
@@ -141,11 +141,16 @@ var controller = (function(budgetCtrl, UICtrl){
 
       input= UICtrl.getInput();
 
-      newItem=  budgetCtrl.addItem(input.type, input.description, input.value);
-        
-      UICtrl.addListItem(newItem, input.type);
+      if(input.description !== "" && !isNaN(input.value) && input.value>0){
+          
+        newItem=  budgetCtrl.addItem(input.type, input.description, input.value);
       
-      UICtrl.clearFields();
+        UICtrl.addListItem(newItem, input.type);
+  
+        UICtrl.clearFields();
+  
+        updateBudget();
+      }
         
         
         
