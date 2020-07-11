@@ -191,7 +191,7 @@ var controller = (function(budgetCtrl, UICtrl){
              cntrlAddItem();
           }
     });
-        document.querySelector(DOM.container).addEventListener('click',ctrlDeleteItem);
+        document.querySelector(DOM.container).addEventListener('click',cntrlDeleteItem);
 
     };
     
@@ -224,7 +224,7 @@ var controller = (function(budgetCtrl, UICtrl){
         
         
     };
-    var ctrlDeleteitem = function(event){
+    var cntrlDeleteItem = function(event){
         var itemID, splitID, type, ID;
 
         itemID = event.target.parentnode.parentnode.parentnode.parentnode.id;
