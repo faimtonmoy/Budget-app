@@ -60,7 +60,7 @@ var budgetController = (function(){
             data.allItems[type].push(newItem);
             return newItem;
         },
-        deleteItem: function(){
+        deleteItem: function(type, id){
             var ids, index;
 
             ids = data.allItems[type].map(function(current){
@@ -138,12 +138,12 @@ var UIController = (function(){
            if(type === 'inc')
            {
             element= DomString.incomeContainer;
-            html= '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            html= '<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
            }
            else if(type === 'exp')
            {
                element=DomString.expensesContainer;
-            html='<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+            html='<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
            }
            newHtml= html.replace('%id%', obj.id);
            newHtml= newHtml.replace('%description%', obj.description);
@@ -243,7 +243,7 @@ var controller = (function(budgetCtrl, UICtrl){
     var cntrlDeleteItem = function(event){
         var itemID, splitID, type, ID;
 
-        itemID = event.target.parentnode.parentnode.parentnode.parentnode.id;
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
 
         if(itemID){
 
